@@ -22,7 +22,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 780,
 		qty: 84,
 		exchange: "BSE",
-		symbol: "532174.BO",
+		symbol: "ICICIBANK.BO",
 		sector: "Financial Sector",
 	},
 	{
@@ -30,7 +30,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 130,
 		qty: 504,
 		exchange: "BSE",
-		symbol: "544252.BO",
+		symbol: "BAJAJHFL.BO",
 		sector: "Financial Sector",
 	},
 	{
@@ -62,7 +62,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 672,
 		qty: 61,
 		exchange: "BSE",
-		symbol: "542651.BO",
+		symbol: "KPITTECH.BO",
 		sector: "Tech Sector",
 	},
 	{
@@ -70,7 +70,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 1072,
 		qty: 63,
 		exchange: "BSE",
-		symbol: "544028.BO",
+		symbol: "TATATECH.BO",
 		sector: "Tech Sector",
 	},
 	{
@@ -78,7 +78,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 232,
 		qty: 191,
 		exchange: "BSE",
-		symbol: "544107.BO",
+		symbol: "BLSE.BO",
 		sector: "Tech Sector",
 	},
 	{
@@ -86,7 +86,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 1134,
 		qty: 45,
 		exchange: "BSE",
-		symbol: "532790.BO",
+		symbol: "TANLA.BO",
 		sector: "Tech Sector",
 	},
 	{
@@ -102,7 +102,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 845,
 		qty: 90,
 		exchange: "BSE",
-		symbol: "532540.BO",
+		symbol: "TATACONSUM.BO",
 		sector: "Consumer",
 	},
 	{
@@ -110,7 +110,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 2376,
 		qty: 36,
 		exchange: "BSE",
-		symbol: "500331.BO",
+		symbol: "PIDILITIND.BO",
 		sector: "Consumer",
 	},
 	{
@@ -118,7 +118,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 224,
 		qty: 225,
 		exchange: "BSE",
-		symbol: "500400.BO",
+		symbol: "TATAPOWER.BO",
 		sector: "Power",
 	},
 	{
@@ -126,7 +126,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 875,
 		qty: 50,
 		exchange: "BSE",
-		symbol: "542323.BO",
+		symbol: "KPIGREEN.BO",
 		sector: "Power",
 	},
 	{
@@ -134,7 +134,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 44,
 		qty: 450,
 		exchange: "BSE",
-		symbol: "532667.BO",
+		symbol: "SUZLON.BO",
 		sector: "Power",
 	},
 	{
@@ -142,7 +142,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 998,
 		qty: 45,
 		exchange: "BSE",
-		symbol: "542851.BO",
+		symbol: "GENSOL.BO",
 		sector: "Power",
 	},
 	{
@@ -150,7 +150,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 580,
 		qty: 60,
 		exchange: "BSE",
-		symbol: "543517.BO",
+		symbol: "HARIOMPIPE.BO",
 		sector: "Pipe Sector",
 	},
 	{
@@ -166,7 +166,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 2818,
 		qty: 28,
 		exchange: "BSE",
-		symbol: "542652.BO",
+		symbol: "POLYCAB.BO",
 		sector: "Pipe Sector",
 	},
 	{
@@ -174,7 +174,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 1610,
 		qty: 32,
 		exchange: "BSE",
-		symbol: "543318.BO",
+		symbol: "CLEAN.BO",
 		sector: "Others",
 	},
 	{
@@ -182,7 +182,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 2248,
 		qty: 27,
 		exchange: "BSE",
-		symbol: "506401.BO",
+		symbol: "DEEPAKNTR.BO",
 		sector: "Others",
 	},
 	{
@@ -190,7 +190,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 4284,
 		qty: 16,
 		exchange: "BSE",
-		symbol: "541557.BO",
+		symbol: "FINEORG.BO",
 		sector: "Others",
 	},
 	{
@@ -198,7 +198,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 2037,
 		qty: 8,
 		exchange: "BSE",
-		symbol: "533282.BO",
+		symbol: "GRAVITA.BO",
 		sector: "Others",
 	},
 	{
@@ -206,7 +206,7 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 1197,
 		qty: 49,
 		exchange: "BSE",
-		symbol: "540719.BO",
+		symbol: "SBILIFE.BO",
 		sector: "Others",
 	},
 ];
