@@ -36,7 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# agent skills (local only)
 .agents/
 skills-lock.json
 

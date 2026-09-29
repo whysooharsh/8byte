@@ -1,10 +1,10 @@
 import { getPortfolio } from "@/lib/get-portfolio";
-import { PortfolioTable } from "@/components/portfolio-table";
+import { PortfolioDashboard } from "@/components/portfolio-dashboard";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-	const { sectors, totalInvestment } = await getPortfolio();
+	const initialData = await getPortfolio();
 
 	return (
 		<div className="flex flex-1 flex-col bg-white dark:bg-black">
@@ -13,10 +13,7 @@ export default async function Home() {
 					Portfolio
 				</h1>
 			</header>
-			<PortfolioTable
-				sectors={sectors}
-				totalInvestment={totalInvestment}
-			/>
+			<PortfolioDashboard initialData={initialData} />
 		</div>
 	);
 }
