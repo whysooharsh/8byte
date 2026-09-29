@@ -4,6 +4,7 @@ export interface Holding {
 	qty: number;
 	exchange: "NSE" | "BSE";
 	symbol: string;
+	googleSymbol: string;
 	sector: string;
 }
 

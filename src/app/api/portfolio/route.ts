@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import YahooFinance from "yahoo-finance2";
 import { HOLDINGS } from "@/lib/portfolio-data";
+import { fetchGoogleStats } from "@/lib/google-finance";
 import type { EnrichedHolding, SectorSummary } from "@/lib/types";
 
 const yahooFinance = new YahooFinance();
@@ -20,7 +21,10 @@ export async function GET() {
 		0,
 	);
 
-	const cmps = await Promise.all(HOLDINGS.map((h) => fetchCmp(h.symbol)));
+	const [cmps, googleStats] = await Promise.all([
+		Promise.all(HOLDINGS.map((h) => fetchCmp(h.symbol))),
+		Promise.all(HOLDINGS.map((h) => fetchGoogleStats(h.googleSymbol))),
+	]);
 
 	const enriched: EnrichedHolding[] = HOLDINGS.map((h, i) => {
 		const investment = h.purchasePrice * h.qty;
@@ -33,8 +37,8 @@ export async function GET() {
 			cmp,
 			presentValue,
 			gainLoss: presentValue !== null ? presentValue - investment : null,
-			peRatio: null,
-			latestEarnings: null,
+			peRatio: googleStats[i].peRatio,
+			latestEarnings: googleStats[i].latestEarnings,
 		};
 	});
 
