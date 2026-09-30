@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Dashboard
 
-## Getting Started
+A live portfolio dashboard built with Next.js, TypeScript and Tailwind CSS. Holdings come from the provided Excel sheet, prices from Yahoo Finance, and P/E and earnings from Google Finance.
 
-First, run the development server:
+## Features
+
+- Holdings table with Particulars, Purchase Price, Qty, Investment, Portfolio %, NSE/BSE code, CMP, Present Value, Gain/Loss, P/E and Latest Earnings
+- Grouped by sector with total investment, present value and gain/loss per sector
+- CMP, Present Value and Gain/Loss refresh every 15 seconds
+- Gains in green and losses in red, with arrows so it doesn't rely on color alone
+- Missing data shows as `—` with a notice instead of breaking the page
+
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. No environment variables or API keys are needed.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API
 
-## Learn More
+`GET /api/portfolio` returns the sectors, their holdings and totals as JSON. The page renders the first load on the server and then polls this endpoint.
 
-To learn more about Next.js, take a look at the following resources:
+## Project layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/
+    page.tsx                    server page, loads initial data
+    api/portfolio/route.ts      JSON endpoint
+  components/
+    portfolio-dashboard.tsx     15s polling, notices
+    portfolio-table.tsx         table and sector summaries
+  lib/
+    portfolio-data.ts           holdings from the Excel sheet
+    get-portfolio.ts            fetches prices and builds the sector summary
+    google-finance.ts           Google Finance scraper with cache
+    types.ts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Changing holdings
 
-## Deploy on Vercel
+Edit `src/lib/portfolio-data.ts`. Each holding needs two symbols:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `symbol` for Yahoo Finance, for example `HDFCBANK.NS` or `ICICIBANK.BO`
+- `googleSymbol` for Google Finance, for example `HDFCBANK:NSE` or `532174:BOM` (BSE stocks use the numeric code)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploying
+
+Import the repo in Vercel and deploy with the defaults.
+
+## Known limitations
+
+- Yahoo and Google Finance have no official API, so these are unofficial sources. They can be delayed, inaccurate or break without notice.
+- Some stocks have no data, for example Savani Financials is not on Yahoo Finance.
+- The Google Finance cache lives in server memory, so on serverless hosting each instance keeps its own copy.
