@@ -13,6 +13,7 @@ Holdings are read from the provided Excel sheet into `src/lib/portfolio-data.ts`
 **2. Mapping symbols.** The sheet has an NSE ticker for some stocks and a numeric BSE code for the rest. Yahoo does not accept the numeric code, it needs a ticker like `ICICIBANK.BO`. Google is the opposite and only works with the numeric code like `532174:BOM`. Each holding therefore stores both symbols. The NSE/BSE column still shows the code from the sheet.
 
 **3. Rate limiting.** My first version made 26 Yahoo requests and 26 Google requests per refresh, and some of them came back empty. Two fixes:
+
 - Yahoo prices are fetched in one batched call for all symbols.
 - Google P/E and EPS are cached in memory for an hour, since they change quarterly. Failed fetches are not cached, so they retry on the next poll.
 
@@ -25,7 +26,7 @@ Holdings are read from the provided Excel sheet into `src/lib/portfolio-data.ts`
 ## Decisions
 
 - "Latest Earnings" is shown as the EPS value Google Finance publishes, since it does not expose a separate earnings field.
-- A plain semantic `<table>` is used instead of `react-table`. The layout needs sector subtotal rows between holdings and there is no sorting or filtering, so the library would add more code than it saves.
+- The table uses `@tanstack/react-table` (v8). Sector rows and their totals come from its grouping and `sum` aggregation on the `sector` column, so they are not calculated by hand in the component.
 - No charts. `recharts` was optional.
 - No secrets exist in this app, so nothing sensitive reaches the client.
 
