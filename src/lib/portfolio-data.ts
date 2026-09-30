@@ -60,8 +60,8 @@ export const HOLDINGS: Holding[] = [
 		purchasePrice: 4775,
 		qty: 16,
 		exchange: "NSE",
-		symbol: "LTIM.NS",
-		googleSymbol: "LTIM:NSE",
+		symbol: "LTM.NS",
+		googleSymbol: "LTM:NSE",
 		sector: "Tech Sector",
 	},
 	{

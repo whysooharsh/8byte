@@ -5,12 +5,18 @@ import type { EnrichedHolding, SectorSummary } from "@/lib/types";
 
 const yahooFinance = new YahooFinance({ suppressNotices: ["yahooSurvey"] });
 
-async function fetchCmp(symbol: string): Promise<number | null> {
+async function fetchCmps(symbols: string[]): Promise<Map<string, number>> {
 	try {
-		const quote = await yahooFinance.quote(symbol);
-		return quote.regularMarketPrice ?? null;
+		const quotes = await yahooFinance.quote(symbols);
+		return new Map(
+			quotes.flatMap((q) =>
+				q.regularMarketPrice !== undefined
+					? [[q.symbol, q.regularMarketPrice] as [string, number]]
+					: [],
+			),
+		);
 	} catch {
-		return null;
+		return new Map();
 	}
 }
 
@@ -20,14 +26,14 @@ export async function getPortfolio() {
 		0,
 	);
 
-	const [cmps, googleStats] = await Promise.all([
-		Promise.all(HOLDINGS.map((h) => fetchCmp(h.symbol))),
+	const [cmpBySymbol, googleStats] = await Promise.all([
+		fetchCmps(HOLDINGS.map((h) => h.symbol)),
 		Promise.all(HOLDINGS.map((h) => fetchGoogleStats(h.googleSymbol))),
 	]);
 
 	const enriched: EnrichedHolding[] = HOLDINGS.map((h, i) => {
 		const investment = h.purchasePrice * h.qty;
-		const cmp = cmps[i];
+		const cmp = cmpBySymbol.get(h.symbol) ?? null;
 		const presentValue = cmp !== null ? cmp * h.qty : null;
 		return {
 			...h,
