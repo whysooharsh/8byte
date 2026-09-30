@@ -97,7 +97,7 @@ export function PortfolioTable({
 								scope="col"
 								className="px-4 py-2.5 text-left font-medium"
 							>
-								Exchange
+								NSE/BSE
 							</th>
 							<th scope="col" className={th}>
 								CMP
@@ -171,7 +171,7 @@ export function PortfolioTable({
 										{(h.portfolioPercent * 100).toFixed(1)}%
 									</td>
 									<td className="px-4 py-2.5 text-zinc-500 dark:text-zinc-500">
-										{h.exchange}
+										{h.googleSymbol.split(":")[0]}
 									</td>
 									<td className={td}>
 										{h.cmp !== null ? (
