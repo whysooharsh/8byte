@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { SectorSummary } from "@/lib/types";
 
 const inr = new Intl.NumberFormat("en-IN", {
@@ -26,7 +27,7 @@ function GainCell({ value }: { value: number | null }) {
 const th = "px-4 py-2.5 font-medium text-right";
 const td = "px-4 py-2.5 text-right font-mono tabular-nums";
 
-export function PortfolioTable({
+function Table({
 	sectors,
 	totalInvestment,
 }: {
@@ -234,3 +235,5 @@ export function PortfolioTable({
 		</div>
 	);
 }
+
+export const PortfolioTable = memo(Table);
